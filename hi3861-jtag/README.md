@@ -1,0 +1,1 @@
+This is a board to connect a jtag or swd debugger to a hi3861.

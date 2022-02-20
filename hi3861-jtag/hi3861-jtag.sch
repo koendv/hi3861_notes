@@ -1,0 +1,452 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Hi3861 JTAG SWD Connector"
+Date "2022-02-16"
+Rev ""
+Comp "koendv"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_01x12 J1
+U 1 1 620CDB54
+P 2000 2350
+F 0 "J1" H 2080 2342 50  0000 L CNN
+F 1 "Conn_01x12" H 2080 2251 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical" H 2000 2350 50  0001 C CNN
+F 3 "~" H 2000 2350 50  0001 C CNN
+	1    2000 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x12 J2
+U 1 1 620CFCDB
+P 3900 2350
+F 0 "J2" H 3980 2342 50  0000 L CNN
+F 1 "Conn_01x12" H 3980 2251 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical" H 3900 2350 50  0001 C CNN
+F 3 "~" H 3900 2350 50  0001 C CNN
+	1    3900 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_ARM_JTAG_SWD_20 J3
+U 1 1 620D0B3D
+P 6250 2400
+F 0 "J3" H 5721 2446 50  0000 R CNN
+F 1 "Conn_ARM_JTAG_SWD_20" H 5721 2355 50  0000 R CNN
+F 2 "Connector_IDC:IDC-Header_2x10_P2.54mm_Vertical" H 6700 1350 50  0001 L TNN
+F 3 "http://infocenter.arm.com/help/topic/com.arm.doc.dui0499b/DUI0499B_system_design_reference.pdf" V 5900 1150 50  0001 C CNN
+	1    6250 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 1850 1800 1850
+Wire Wire Line
+	1400 1950 1800 1950
+Wire Wire Line
+	1400 2050 1800 2050
+Wire Wire Line
+	1400 2150 1800 2150
+Wire Wire Line
+	1400 2250 1800 2250
+Wire Wire Line
+	1400 2350 1800 2350
+Wire Wire Line
+	1400 2450 1800 2450
+Wire Wire Line
+	1400 2550 1800 2550
+Wire Wire Line
+	1400 2650 1800 2650
+Wire Wire Line
+	1400 2750 1800 2750
+Wire Wire Line
+	1400 2850 1800 2850
+Wire Wire Line
+	1400 2950 1800 2950
+Wire Wire Line
+	3300 1850 3700 1850
+Wire Wire Line
+	3300 1950 3700 1950
+Wire Wire Line
+	3300 2050 3700 2050
+Wire Wire Line
+	3300 2150 3700 2150
+Wire Wire Line
+	3300 2250 3700 2250
+Wire Wire Line
+	3300 2350 3700 2350
+Wire Wire Line
+	3300 2450 3700 2450
+Wire Wire Line
+	3300 2550 3700 2550
+Wire Wire Line
+	3300 2650 3700 2650
+Wire Wire Line
+	3300 2750 3700 2750
+Wire Wire Line
+	3300 2850 3700 2850
+Wire Wire Line
+	3300 2950 3700 2950
+Text Label 1400 1850 0    50   ~ 0
+RST
+Text Label 1400 1950 0    50   ~ 0
+IO2
+Text Label 1400 2050 0    50   ~ 0
+IO9
+Text Label 1400 2150 0    50   ~ 0
+IO10
+Text Label 1400 2250 0    50   ~ 0
+IO11
+Text Label 1400 2350 0    50   ~ 0
+IO12
+Text Label 1400 2450 0    50   ~ 0
+IO13
+Text Label 1400 2550 0    50   ~ 0
+IO14
+Text Label 1400 2650 0    50   ~ 0
+IO0
+Text Label 1400 2750 0    50   ~ 0
+IO1
+$Comp
+L power:GND #PWR01
+U 1 1 620D5BFB
+P 1400 2850
+F 0 "#PWR01" H 1400 2600 50  0001 C CNN
+F 1 "GND" V 1405 2722 50  0000 R CNN
+F 2 "" H 1400 2850 50  0001 C CNN
+F 3 "" H 1400 2850 50  0001 C CNN
+	1    1400 2850
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR02
+U 1 1 620D5F5D
+P 1400 2950
+F 0 "#PWR02" H 1400 2800 50  0001 C CNN
+F 1 "+3.3V" V 1415 3078 50  0000 L CNN
+F 2 "" H 1400 2950 50  0001 C CNN
+F 3 "" H 1400 2950 50  0001 C CNN
+	1    1400 2950
+	0    -1   -1   0   
+$EndComp
+Text Label 3300 1850 0    50   ~ 0
+IO6
+Text Label 3300 1950 0    50   ~ 0
+IO8
+Text Label 3300 2050 0    50   ~ 0
+IO5
+Text Label 3300 2150 0    50   ~ 0
+IO7
+Text Label 3300 2250 0    50   ~ 0
+IO4
+Text Label 3300 2350 0    50   ~ 0
+IO3
+$Comp
+L power:GND #PWR09
+U 1 1 620E0EA4
+P 3300 2450
+F 0 "#PWR09" H 3300 2200 50  0001 C CNN
+F 1 "GND" V 3305 2322 50  0000 R CNN
+F 2 "" H 3300 2450 50  0001 C CNN
+F 3 "" H 3300 2450 50  0001 C CNN
+	1    3300 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR011
+U 1 1 620E12BC
+P 3300 2650
+F 0 "#PWR011" H 3300 2400 50  0001 C CNN
+F 1 "GND" V 3305 2522 50  0000 R CNN
+F 2 "" H 3300 2650 50  0001 C CNN
+F 3 "" H 3300 2650 50  0001 C CNN
+	1    3300 2650
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR013
+U 1 1 620E1844
+P 3300 2850
+F 0 "#PWR013" H 3300 2600 50  0001 C CNN
+F 1 "GND" V 3305 2722 50  0000 R CNN
+F 2 "" H 3300 2850 50  0001 C CNN
+F 3 "" H 3300 2850 50  0001 C CNN
+	1    3300 2850
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR010
+U 1 1 620E1C34
+P 3300 2550
+F 0 "#PWR010" H 3300 2400 50  0001 C CNN
+F 1 "+3.3V" V 3315 2678 50  0000 L CNN
+F 2 "" H 3300 2550 50  0001 C CNN
+F 3 "" H 3300 2550 50  0001 C CNN
+	1    3300 2550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+5V #PWR012
+U 1 1 620E2319
+P 3300 2750
+F 0 "#PWR012" H 3300 2600 50  0001 C CNN
+F 1 "+5V" V 3315 2878 50  0000 L CNN
+F 2 "" H 3300 2750 50  0001 C CNN
+F 3 "" H 3300 2750 50  0001 C CNN
+	1    3300 2750
+	0    -1   -1   0   
+$EndComp
+Text Label 3300 2950 0    50   ~ 0
+VIN
+$Comp
+L power:GND #PWR015
+U 1 1 620E5FC9
+P 6150 3300
+F 0 "#PWR015" H 6150 3050 50  0001 C CNN
+F 1 "GND" H 6155 3127 50  0000 C CNN
+F 2 "" H 6150 3300 50  0001 C CNN
+F 3 "" H 6150 3300 50  0001 C CNN
+	1    6150 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 3200 6150 3300
+Wire Wire Line
+	6150 1500 6150 1600
+$Comp
+L power:+3.3V #PWR014
+U 1 1 620E7425
+P 6150 1500
+F 0 "#PWR014" H 6150 1350 50  0001 C CNN
+F 1 "+3.3V" H 6165 1673 50  0000 C CNN
+F 2 "" H 6150 1500 50  0001 C CNN
+F 3 "" H 6150 1500 50  0001 C CNN
+	1    6150 1500
+	1    0    0    -1  
+$EndComp
+Text GLabel 1400 1950 0    50   Input ~ 0
+TRST
+Text GLabel 1400 1850 0    50   Input ~ 0
+RST
+Text GLabel 1400 2650 0    50   Input ~ 0
+TDO
+Text GLabel 1400 2750 0    50   Input ~ 0
+TCK
+Text GLabel 3300 1850 0    50   Input ~ 0
+JTAG_MODE
+Text GLabel 3300 1950 0    50   Input ~ 0
+JTAG_EN
+Text GLabel 3300 2250 0    50   Input ~ 0
+TMS
+Text GLabel 3300 2350 0    50   Input ~ 0
+TDI
+Wire Wire Line
+	7250 1900 6850 1900
+Wire Wire Line
+	7250 2000 6850 2000
+Wire Wire Line
+	7250 2300 6850 2300
+Wire Wire Line
+	7250 2400 6850 2400
+Wire Wire Line
+	7250 2500 6850 2500
+Wire Wire Line
+	7250 2600 6850 2600
+Text GLabel 7250 1900 2    50   Input ~ 0
+TRST
+Text GLabel 7250 2000 2    50   Input ~ 0
+RST
+Text GLabel 7250 2300 2    50   Input ~ 0
+TCK
+Text GLabel 7250 2400 2    50   Input ~ 0
+TMS
+Text GLabel 7250 2500 2    50   Input ~ 0
+TDO
+Text GLabel 7250 2600 2    50   Input ~ 0
+TDI
+$Comp
+L Device:R_Small R1
+U 1 1 620F91EC
+P 2650 3750
+F 0 "R1" V 2454 3750 50  0000 C CNN
+F 1 "4k7" V 2545 3750 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" H 2650 3750 50  0001 C CNN
+F 3 "~" H 2650 3750 50  0001 C CNN
+	1    2650 3750
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR03
+U 1 1 620F9EF8
+P 2850 3750
+F 0 "#PWR03" H 2850 3600 50  0001 C CNN
+F 1 "+3.3V" V 2865 3878 50  0000 L CNN
+F 2 "" H 2850 3750 50  0001 C CNN
+F 3 "" H 2850 3750 50  0001 C CNN
+	1    2850 3750
+	0    1    1    0   
+$EndComp
+Text GLabel 2450 3750 0    50   Input ~ 0
+JTAG_EN
+Wire Wire Line
+	2450 3750 2550 3750
+Wire Wire Line
+	2750 3750 2850 3750
+$Comp
+L Device:R_Small R3
+U 1 1 62100339
+P 2650 4450
+F 0 "R3" V 2454 4450 50  0000 C CNN
+F 1 "4k7" V 2545 4450 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" H 2650 4450 50  0001 C CNN
+F 3 "~" H 2650 4450 50  0001 C CNN
+	1    2650 4450
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR05
+U 1 1 6210033F
+P 2850 4450
+F 0 "#PWR05" H 2850 4300 50  0001 C CNN
+F 1 "+3.3V" V 2865 4578 50  0000 L CNN
+F 2 "" H 2850 4450 50  0001 C CNN
+F 3 "" H 2850 4450 50  0001 C CNN
+	1    2850 4450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2450 4450 2550 4450
+Wire Wire Line
+	2750 4450 2850 4450
+$Comp
+L Device:R_Small R4
+U 1 1 62101081
+P 2650 4800
+F 0 "R4" V 2454 4800 50  0000 C CNN
+F 1 "1k0" V 2545 4800 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" H 2650 4800 50  0001 C CNN
+F 3 "~" H 2650 4800 50  0001 C CNN
+	1    2650 4800
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR06
+U 1 1 62101087
+P 2850 4800
+F 0 "#PWR06" H 2850 4650 50  0001 C CNN
+F 1 "+3.3V" V 2865 4928 50  0000 L CNN
+F 2 "" H 2850 4800 50  0001 C CNN
+F 3 "" H 2850 4800 50  0001 C CNN
+	1    2850 4800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2450 4800 2550 4800
+Wire Wire Line
+	2750 4800 2850 4800
+$Comp
+L Device:R_Small R5
+U 1 1 6210204F
+P 2650 5150
+F 0 "R5" V 2454 5150 50  0000 C CNN
+F 1 "4k7" V 2545 5150 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" H 2650 5150 50  0001 C CNN
+F 3 "~" H 2650 5150 50  0001 C CNN
+	1    2650 5150
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR07
+U 1 1 62102055
+P 2850 5150
+F 0 "#PWR07" H 2850 5000 50  0001 C CNN
+F 1 "+3.3V" V 2865 5278 50  0000 L CNN
+F 2 "" H 2850 5150 50  0001 C CNN
+F 3 "" H 2850 5150 50  0001 C CNN
+	1    2850 5150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2450 5150 2550 5150
+Wire Wire Line
+	2750 5150 2850 5150
+$Comp
+L Device:R_Small R6
+U 1 1 62103285
+P 2650 5500
+F 0 "R6" V 2454 5500 50  0000 C CNN
+F 1 "4k7" V 2545 5500 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" H 2650 5500 50  0001 C CNN
+F 3 "~" H 2650 5500 50  0001 C CNN
+	1    2650 5500
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR08
+U 1 1 6210328B
+P 2850 5500
+F 0 "#PWR08" H 2850 5350 50  0001 C CNN
+F 1 "+3.3V" V 2865 5628 50  0000 L CNN
+F 2 "" H 2850 5500 50  0001 C CNN
+F 3 "" H 2850 5500 50  0001 C CNN
+	1    2850 5500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2450 5500 2550 5500
+Wire Wire Line
+	2750 5500 2850 5500
+Text GLabel 2450 4450 0    50   Input ~ 0
+TCK
+Text GLabel 2450 5150 0    50   Input ~ 0
+TDI
+Text GLabel 2450 5500 0    50   Input ~ 0
+TMS
+Text GLabel 2450 4800 0    50   Input ~ 0
+TRST
+$Comp
+L Device:R_Small R2
+U 1 1 620EE066
+P 2650 4100
+F 0 "R2" V 2454 4100 50  0000 C CNN
+F 1 "4k7" V 2545 4100 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" H 2650 4100 50  0001 C CNN
+F 3 "~" H 2650 4100 50  0001 C CNN
+	1    2650 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR04
+U 1 1 620EE06C
+P 2850 4100
+F 0 "#PWR04" H 2850 3950 50  0001 C CNN
+F 1 "+3.3V" V 2865 4228 50  0000 L CNN
+F 2 "" H 2850 4100 50  0001 C CNN
+F 3 "" H 2850 4100 50  0001 C CNN
+	1    2850 4100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2450 4100 2550 4100
+Wire Wire Line
+	2750 4100 2850 4100
+Text GLabel 2450 4100 0    50   Input ~ 0
+TDO
+Text Notes 2000 7000 0    50   ~ 0
+Pin\nIO2/REFCLK_FREQ_STATUS\nIO6/JTAG_MODE\nIO8/JTAG_ENABLE\n
+Text Notes 3100 7000 0    50   ~ 0
+Default state\nPull down\nPull down\nPull down\n
+Text Notes 3650 7000 0    50   ~ 0
+Low level\n40MHz (Default)\nNormal function mode (Default)\nOrdinary IO (Default)\n
+Text Notes 4950 7000 0    50   ~ 0
+High level\n24MHz\nDFT Test mode\nJTAG enable\n
+Text Notes 2000 7150 0    50   ~ 0
+Leave R4 open for 40MHz clock frequency
+$EndSCHEMATC
