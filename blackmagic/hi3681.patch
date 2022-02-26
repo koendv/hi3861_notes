@@ -1,0 +1,42 @@
+diff --git a/src/target/adiv5.h b/src/target/adiv5.h
+index 95c62f6..716bae5 100644
+--- a/src/target/adiv5.h
++++ b/src/target/adiv5.h
+@@ -107,6 +107,7 @@
+ #define AP_DESIGNER_CS           0x555
+ #define DESIGNER_XAMBALA         0x61e
+ #define AP_DESIGNER_ENERGY_MICRO 0x673
++#define AP_DESIGNER_HISILICON    0x736
+ #define AP_DESIGNER_GIGADEVICE   0x751
+ #define AP_DESIGNER_RASPBERRY    0x927
+ 
+diff --git a/src/target/jtag_devs.c b/src/target/jtag_devs.c
+index d7c2b09..7916834 100644
+--- a/src/target/jtag_devs.c
++++ b/src/target/jtag_devs.c
+@@ -31,6 +31,9 @@ jtag_dev_descr_t dev_descr[] = {
+ 	{.idcode = 0x1000563D, .idmask = 0xFFFFFFFF,
+ 	 .descr = "GigaDevice: GD32VF103CBT6.",
+ 	 .handler = rvdbg013_jtag_dp_handler},
++	{.idcode = 0x0000076d, .idmask = 0xFFFFFFFF,
++	 .descr = "HiSilicon.",
++	 .handler = rvdbg013_jtag_dp_handler},
+ 	{.idcode = 0x06410041, .idmask = 0x0FFFFFFF,
+ 		.descr = "ST Microelectronics: STM32, Medium density."},
+ 	{.idcode = 0x06412041, .idmask = 0x0FFFFFFF,
+diff --git a/src/target/jtag_scan.c b/src/target/jtag_scan.c
+index 8fecf45..60c6945 100644
+--- a/src/target/jtag_scan.c
++++ b/src/target/jtag_scan.c
+@@ -172,6 +172,11 @@ int jtag_scan(const uint8_t *irlens)
+ 			expected_irlen = 5;
+ 			jtag_devs[i].jd_descr = "GIGADEVICE BSD";
+ 			break;
++		case AP_DESIGNER_HISILICON:
++			jtag_devs[i].jd_descr = "HISILICON";
++			expected_irlen = 5;
++			jd_handlers[i] = rvdbg013_jtag_dp_handler;
++			break;
+ 		}
+ 		if (!jtag_devs[i].jd_descr) {
+ 			DEBUG_WARN("Unhandled designer %x\n", designer);
