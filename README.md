@@ -130,7 +130,7 @@ JLink.exe -device RISC-V -Speed 2000 -IF JTAG -jtagconf -1,-1 jlinkBurner.txt
 
 ### black magic probe
 
-[Black magic probe](https://github.com/blackmagic-debug/blackmagic) is an open source debugger for arm processors. risc-v on bmp is [work in progress](https://github.com/blackmagic-debug/blackmagic/pull/924). To compile an experimental version of bmp for risc-v:
+[Black magic probe](https://github.com/blackmagic-debug/blackmagic) is an open source debugger for arm processors. risc-v on bmp is [work in progress](https://github.com/blackmagic-debug/blackmagic/pull/924), support for GD32VF103 and ESP32-C3. To compile an experimental version of bmp for risc-v:
 
 ```
 git clone -b ruabmbua https://github.com/UweBonnes/blackmagic
