@@ -126,7 +126,7 @@ The [jlink directory](jlink) contains a script for the [Segger JLink](https://ww
 JLink.exe -device RISC-V -Speed 2000 -IF JTAG -jtagconf -1,-1 jlinkBurner.txt
 ```
 
-jlink has a good implementation of the risc-v debug interface, but support to flash Hi3861 processors is not built in. 
+jlink has a good implementation of the risc-v debug interface, but support to flash Hi3861 processors is not built in. Keep the JTAG cable short - 6cm or less.
 
 ### black magic probe
 
