@@ -13,7 +13,7 @@
 
 ## schematic
 
-[![Hi3861 (303HI386101)](pictures/Hi3861_303HI386101_small.jpg)](schematics/Hi3861_303HI386101.pdf)
+[![Hi3861 (303HI386101)](pictures/Hi3861_303HI386101_small.png)](schematics/Hi3861_303HI386101.pdf)
 
 ## block diagram
 
