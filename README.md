@@ -51,7 +51,9 @@ IO06|JTAG_MODE|
 IO08|JTAG_ENABLE|Pull high
 
 If pin IO8 is low at power-up, pins IO0...IO4 are normal GPIO pins.
-If pin IO8 is high at power-up, pins IO0...IO4 are used for JTAG. 
+If pin IO8 is high at power-up, pins IO0...IO4 are used for JTAG.
+
+JTAG pins IO03, IO04 are also connected with the CH340 usb-serial converter RX, TX pins.
 
 ## hi3861 start up mode
 
@@ -135,14 +137,23 @@ JLink.exe -device RISC-V -Speed 2000 -IF JTAG -jtagconf -1,-1 jlinkBurner.txt
 ```
 git clone -b ruabmbua https://github.com/UweBonnes/blackmagic
 cd blackmagic
+patch -p1 < ../blackmagic/hi3681.patch
 make PROBE_HOST=hosted
 ```
+Connect to JTAG with FT2232. The Hi3861 is recognized, but more work is needed.
 
-Connect to JTAG with FT2232.
+## toolchain
 
-## gcc
+Compile the riscv toolchain from source:
 
-The gnu C compiler. [xpack risc-v compiler](https://xpack.github.io/riscv-none-embed-gcc/) for embedded systems.
+```
+git clone --recursive https://github.com/riscv/riscv-gnu-toolchain
+cd riscv-gnu-toolchain/
+mkdir build
+cd build/
+../configure --prefix=/opt/riscv32 --with-arch=rv32im --with-abi=ilp32
+make
+```
 
 ## gdb
 
@@ -159,8 +170,6 @@ cd build
 make all
 sudo make install
 ```
-
-Patching with _risc-v-gdb.patch_ is needed if using gdb-11.1 with black magic probe, and can be omitted if black magic probe is not used.
 
 If you start a 64-bit gdb, and connect to a 32-bit target, it may be necessary to specify architecture first:
 
