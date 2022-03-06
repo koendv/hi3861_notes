@@ -182,7 +182,7 @@ The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony.
 
 ## rust
 
-Rust application example for hi3861. Install rust from [rustup](https://rustup.rs/),
+Rust application example for hi3861. Install rust from [rustup](https://rustup.rs/). Install [riscv xpack](https://xpack.github.io/riscv-none-embed-gcc/).
 
 ```
 git clone https://gitee.com/luojia65/hihope-hi3861-example
