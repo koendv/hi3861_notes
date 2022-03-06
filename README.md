@@ -124,7 +124,7 @@ In another terminal:
 
 ### jlink
 
-The [jlink directory](jlink) contains a script for the [Segger JLink](https://www.segger.com/products/debug-probes/j-link/) debugger. The script writes 0x000000ff to address 0x400000. This script can be modified to flash firmware to a Hi3861.
+The [jlink directory](jlink) contains a script for the [Segger JLink](https://www.segger.com/products/debug-probes/j-link/) debugger. This script can be modified to flash firmware to a Hi3861.
 
 ```
 JLink.exe -device RISC-V -Speed 2000 -IF JTAG -jtagconf -1,-1 jlinkBurner.txt
