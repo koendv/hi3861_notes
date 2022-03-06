@@ -11,10 +11,6 @@
 - WiFi
 - Bluetooth
 
-## schematic
-
-[![Hi3861 (303HI386101)](pictures/Hi3861_303HI386101_small.png)](schematics/Hi3861_303HI386101.pdf)
-
 ## block diagram
 
 ![ ](pictures/mcu_block_diagram.png  "HI3861 Block Diagram")
@@ -212,13 +208,16 @@ Transfer rate: 68 KB/sec, 1577 bytes/write.
 (gdb) quit 
 ```
 
-## hardware designs
+## hardware
+
+[![Hi3861 (303HI386101)](pictures/Hi3861_303HI386101_small.png)](schematics/Hi3861_303HI386101.pdf)
+The picture above is the schematic of [this board](pictures/hi3861_module.jpg)
 
 - [reference design](http://www.hihope.org/en/) and [documentation](http://www.hihope.org/en/download/download.aspx?mtt=26)
 - [Tiny-Hi3861](https://github.com/imliubo/Tiny-Hi3861). Original on [gitee](https://gitee.com/meng_guan/Tiny-Hi3861/)
 - [genkipi](https://gitee.com/genkipi/devboard_device_itcast_genkipi)
 
-For your own designs, modules with in-built pcb antenna are probably easiest to use.
+Modules with in-built pcb antenna are probably easiest to use for your own designs.
 
 - [FN-LINK 3161H-I](doc/Fn-Link_3161H-I_datasheet_V4.0_20200601.pdf)
 - [AI-Thinker](https://docs.ai-thinker.com/en/hi)
@@ -226,8 +225,10 @@ For your own designs, modules with in-built pcb antenna are probably easiest to 
 ## links
 
 - [Hi3861V100 product page](https://www.hisilicon.com/en/products/smart-iot/ShortRangeWirelessIOT/Hi3861V100)
+- [Huawei build](https://device.harmonyos.com/en/docs/documentation/guide/quickstart-lite-steps-hi3861-setting-0000001105989316) of the riscv toolchain.
 - [hiburn for linux](https://github.com/OpenHisiIpCam/hiburn)
 - [Hi3861 on aliexpress](https://www.aliexpress.com/item/1005003339044104.html)
+- [Installing Liteos on Hi3861 (in Chinese)](https://harmonyos.51cto.com/posts/4013)
 
 If you find errors in this document, please open an issue.
 If this page saved you some time, maybe you want to buy me a cup of tea.  Thank you.

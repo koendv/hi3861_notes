@@ -1,0 +1,13 @@
+diff --git a/gdb/main.c b/gdb/main.c
+index 5e97f98e92..f0d5da9b3a 100644
+--- a/gdb/main.c
++++ b/gdb/main.c
+@@ -626,7 +626,7 @@ captured_main_1 (struct captured_main_args *context)
+   int argc = context->argc;
+   char **argv = context->argv;
+ 
+-  static int quiet = 0;
++  static int quiet = 1;
+   static int set_args = 0;
+   static int inhibit_home_gdbinit = 0;
+ 
