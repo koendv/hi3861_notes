@@ -178,7 +178,7 @@ If you start a 64-bit gdb, and connect to a 32-bit target, it may be necessary t
 
 The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony.
 
-hcc_riscv32 is a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code.
+The sdk can be compiled with gcc or with hcc_riscv32, a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code.
 
 - compressed load-byte-unsigned *lbu* and store byte *sb* instructions. Option ``-Wa,-enable-c-lbu-sb``
 - long load immediate *lli* instruction in 6 bytes, saves 2 bytes. Option ``-femit-lli``
