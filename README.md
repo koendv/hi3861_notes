@@ -176,14 +176,16 @@ If you start a 64-bit gdb, and connect to a 32-bit target, it may be necessary t
 ```
 ## operating systems
 
-The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony. The SDK compiler has extensions for faster interrupts and more compact code.
+The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony.
+
+hcc_riscv32 is a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code.
 
 - compressed load-byte-unsigned *lbu* and store byte *sb* instructions. Option ``-Wa,-enable-c-lbu-sb``
 - long load immediate *lli* instruction in 6 bytes, saves 2 bytes. Option ``-femit-lli``
 - store multiple, increment after *stmia* and load multiple, increment after *ldmia* instructions. Pushes/pops register sets on the stack in a single instruction, fast. Used in trap handler.
 - merge multiple load and store instructions into load multiple *ldm* and store multiple *stm* instructions. Option ``-fldm-stm-optimize``
 
-These extensions to standard risc-v are discussed in [Perotti](doc/CARRV2020_paper_12_Perotti.pdf)
+These extensions to standard risc-v are discussed in [Perotti](doc/CARRV2020_paper_12_Perotti.pdf).
 
 ## rust
 
@@ -195,7 +197,7 @@ cd hihope-hi3861-example
 cargo build
 ```
 Check binary:
- 
+
 ```
 $ /opt/riscv-binutils-gdb/bin/riscv-elf-objdump -f target/riscv32imac-unknown-none-elf/debug/hihope-hi3861-example
 target/riscv32imac-unknown-none-elf/debug/hihope-hi3861-example:     file format elf32-littleriscv
@@ -209,12 +211,12 @@ Flash firmware. With openocd running, type:
 /opt/riscv-binutils-gdb/bin/riscv-elf-gdb -q
 (gdb) target extended-remote :3333
 (gdb) file target/riscv32imac-unknown-none-elf/debug/hihope-hi3861-example
-(gdb) load 
+(gdb) load
 Loading section .text, size 0x9fa lma 0x400000
 Loading section .rodata, size 0x258 lma 0x4009fc
 Start address 0x00400000, load size 3154
 Transfer rate: 68 KB/sec, 1577 bytes/write.
-(gdb) quit 
+(gdb) quit
 ```
 
 ## hardware
