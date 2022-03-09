@@ -18,7 +18,7 @@
 This is a block diagram of the Hi3861 processor.
 External components are a 40MHz crystal, a 32768 Hz crystal, and a pcb antenna. Flash memory is connected via spi. The HI3861 has 2 Mbyte flash memory.
 
-The HI3861 shares die with the HI3881 wifi video camera. The HI3881 IP camera version does not have flash memory.
+The HI3861 shares die with the HI3881 wifi video camera. The HI3881 IP camera version does not have spi flash memory.
 
 ## memory map
 
@@ -49,7 +49,7 @@ IO08|JTAG_ENABLE|Pull high
 If pin IO8 is low at power-up, pins IO0...IO4 are normal GPIO pins.
 If pin IO8 is high at power-up, pins IO0...IO4 are used for JTAG.
 
-JTAG pins IO03, IO04 are also connected with the CH340 usb-serial converter RX, TX pins.
+JTAG pins IO03, IO04 are also connected with the CH340 usb-serial converter RX, TX pins, a possible conflict if using the usb serial and JTAG at the same time.
 
 ## hi3861 start up mode
 
@@ -178,7 +178,7 @@ If you start a 64-bit gdb, and connect to a 32-bit target, it may be necessary t
 
 The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony.
 
-The sdk can be compiled with [gcc](https://device.harmonyos.com/en/docs/documentation/guide/quickstart-lite-steps-hi3861-setting-0000001105989316) or with hcc_riscv32, a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code.
+The sdk can be compiled with [gcc](https://device.harmonyos.com/en/docs/documentation/guide/quickstart-lite-steps-hi3861-setting-0000001105989316) or with hcc_riscv32, a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code:
 
 - compressed load-byte-unsigned *lbu* and store byte *sb* instructions. Option ``-Wa,-enable-c-lbu-sb``
 - long load immediate *lli* instruction in 6 bytes, saves 2 bytes. Option ``-femit-lli``
@@ -189,8 +189,7 @@ These extensions to standard risc-v are discussed in [Perotti](doc/CARRV2020_pap
 
 ## rust
 
-Rust application example for hi3861. Install rust from [rustup](https://rustup.rs/). Install [riscv xpack](https://xpack.github.io/riscv-none-embed-gcc/).
-
+Rust application example for hi3861. Install rust from [rustup](https://rustup.rs/).
 ```
 git clone https://gitee.com/luojia65/hihope-hi3861-example
 cd hihope-hi3861-example
