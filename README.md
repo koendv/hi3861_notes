@@ -176,7 +176,14 @@ If you start a 64-bit gdb, and connect to a 32-bit target, it may be necessary t
 ```
 ## operating systems
 
-The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony.
+The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony. The SDK compiler has extensions for faster interrupts and more compact code.
+
+- compressed load-byte-unsigned *lbu* and store byte *sb* instructions. Option ``-Wa,-enable-c-lbu-sb``
+- long load immediate *lli* instruction in 6 bytes, saves 2 bytes. Option ``-femit-lli``
+- store multiple, increment after *stmia* and load multiple, increment after *ldmia* instructions. Pushes/pops register sets on the stack in a single instruction, fast. Used in trap handler.
+- merge multiple load and store instructions into load multiple *ldm* and store multiple *stm* instructions. Option ``-fldm-stm-optimize``
+
+These extensions to standard risc-v are discussed in [Perotti](doc/CARRV2020_paper_12_Perotti.pdf)
 
 ## rust
 
