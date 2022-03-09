@@ -178,7 +178,7 @@ If you start a 64-bit gdb, and connect to a 32-bit target, it may be necessary t
 
 The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony.
 
-The sdk can be compiled with gcc or with hcc_riscv32, a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code.
+The sdk can be compiled with [gcc](https://device.harmonyos.com/en/docs/documentation/guide/quickstart-lite-steps-hi3861-setting-0000001105989316) or with hcc_riscv32, a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code.
 
 - compressed load-byte-unsigned *lbu* and store byte *sb* instructions. Option ``-Wa,-enable-c-lbu-sb``
 - long load immediate *lli* instruction in 6 bytes, saves 2 bytes. Option ``-femit-lli``
@@ -237,7 +237,6 @@ Modules with in-built pcb antenna are probably easiest to use in your own design
 ## links
 
 - [Hi3861V100 product page](https://www.hisilicon.com/en/products/smart-iot/ShortRangeWirelessIOT/Hi3861V100)
-- [riscv toolchain for LiteOS](https://device.harmonyos.com/en/docs/documentation/guide/quickstart-lite-steps-hi3861-setting-0000001105989316)
 - [hiburn for linux](https://github.com/OpenHisiIpCam/hiburn)
 - [Hi3861 on aliexpress](https://www.aliexpress.com/item/1005003339044104.html)
 - [Installing Liteos on Hi3861 (in Chinese)](https://harmonyos.51cto.com/posts/4013)
