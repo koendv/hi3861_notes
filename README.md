@@ -6,6 +6,7 @@
 [Hi3861](https://www.hisilicon.com/en/products/smart-iot/ShortRangeWirelessIOT/Hi3861V100) is a 32-bit risc-v microcontroller, made by Huawei/HiSilicon.
 
 - 160 MHz
+- 288 kbyte rom
 - 352 kbyte ram in total, 280 kbyte ram available for user programs
 - 2 mbyte flash
 - WiFi
@@ -18,7 +19,7 @@
 This is a block diagram of the Hi3861 processor.
 External components are a 40MHz crystal, a 32768 Hz crystal, and a pcb antenna. Flash memory is connected via spi. The HI3861 has 2 Mbyte flash memory.
 
-The HI3861 shares die with the HI3881 wifi video camera. The HI3881 IP camera version does not have spi flash memory.
+The HI3861 shares die with the HI3881 wifi video camera. The HI3881 IP camera version does not have spi flash memory. The HI3881 runs software from rom.
 
 ## memory map
 
@@ -49,7 +50,7 @@ IO08|JTAG_ENABLE|Pull high
 If pin IO8 is low at power-up, pins IO0...IO4 are normal GPIO pins.
 If pin IO8 is high at power-up, pins IO0...IO4 are used for JTAG.
 
-JTAG pins IO03, IO04 are also connected with the CH340 usb-serial converter RX, TX pins, a possible conflict if using the usb serial and JTAG at the same time.
+JTAG pins IO03, IO04 are also connected with the CH340 usb-serial converter RX, TX pins.  Conflict is possible if using usb serial and JTAG at the same time.
 
 ## hi3861 start up mode
 
@@ -178,12 +179,12 @@ If you start a 64-bit gdb, and connect to a 32-bit target, it may be necessary t
 
 The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony.
 
-The sdk can be compiled with [gcc](https://device.harmonyos.com/en/docs/documentation/guide/quickstart-lite-steps-hi3861-setting-0000001105989316) or with hcc_riscv32, a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code:
+The sdk can be compiled with [riscv32-unknown-elf-gcc](https://device.harmonyos.com/en/docs/documentation/guide/quickstart-lite-steps-hi3861-setting-0000001105989316) or with hcc_riscv32, a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code:
 
-- compressed load-byte-unsigned *lbu* and store byte *sb* instructions. Option ``-Wa,-enable-c-lbu-sb``
-- long load immediate *lli* instruction in 6 bytes, saves 2 bytes. Option ``-femit-lli``
-- store multiple, increment after *stmia* and load multiple, increment after *ldmia* instructions. Pushes/pops register sets on the stack in a single instruction, fast. Used in trap handler.
-- merge multiple load and store instructions into load multiple *ldm* and store multiple *stm* instructions. Option ``-fldm-stm-optimize``
+- "compressed load-byte-unsigned" *lbu* and "store byte" *sb* instructions. Compiler option ``-Wa,-enable-c-lbu-sb``
+- "long load immediate" *lli* instruction in 6 bytes, saves 2 bytes. Compiler option ``-femit-lli``
+- "store multiple, increment after" *stmia* and "load multiple, increment after" *ldmia* instructions. Pushes/pops register sets on the stack in a single instruction, fast. Used in trap handler.
+- merge multiple load and store instructions into "load multiple" *ldm* and "store multiple" *stm* instructions. Compiler option ``-fldm-stm-optimize``
 
 These extensions to standard risc-v are discussed in [Perotti](doc/CARRV2020_paper_12_Perotti.pdf).
 
@@ -240,7 +241,7 @@ Modules with in-built pcb antenna are probably easiest to use in your own design
 - [Hi3861 on aliexpress](https://www.aliexpress.com/item/1005003339044104.html)
 - [Installing Liteos on Hi3861 (in Chinese)](https://harmonyos.51cto.com/posts/4013)
 
-If you find errors in this document, please open an issue.
+This document may contain errors. If you find errors in this document, please open an issue.
 If this page saved you some time, maybe you want to buy me a cup of tea.  Thank you.
 
 [![ko-fi](pictures/kofibutton.svg)](https://ko-fi.com/Q5Q03LPDQ)
