@@ -240,6 +240,7 @@ Modules with in-built pcb antenna are probably easiest to use in your own design
 - [hiburn for linux](https://github.com/OpenHisiIpCam/hiburn)
 - [Hi3861 on aliexpress](https://www.aliexpress.com/item/1005003339044104.html)
 - [Installing Liteos on Hi3861 (in Chinese)](https://harmonyos.51cto.com/posts/4013)
+- [FT2232HL probe](www.aliexpress.com/item/32975940318.html) for openocd. schematic [1](https://github.com/arm8686/FT2232HL-Board) and [2](https://gitee.com/badlyby/FT2232HL-Board)
 
 This document may contain errors. If you find errors in this document, please open an issue.
 If this page saved you some time, maybe you want to buy me a cup of tea.  Thank you.
