@@ -118,6 +118,11 @@ In another terminal:
 (gdb) file firmware.elf
 (gdb) load
 ```
+### ft2232
+
+[![FT2232](pictures/ft2232hl_small.jpg)](pictures/ft2232hl_big.jpg)
+
+[FT2232HL](https://ftdichip.com/products/ft2232hl/) is an ic that interfaces between between usb and uart, jtag, swd, spi, or i2c. FT2232 is well supported by OpenOCD. The FT2232 board above has the advantage that the board has the same pinout as a Segger JLink, so you can use the same cable for both OpenOCD and JLink.
 
 ### jlink
 
