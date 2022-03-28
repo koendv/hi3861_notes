@@ -244,7 +244,7 @@ A possible solution is adding a resistor between these two pins:
 |---|---|
 |before|after|
 
-This way when the usb serial port is idle, CH340T pin 3 is high and R4 acts like a 4.7k pull-up resistor, which is what the JTAG port requires.
+This way when the usb serial port is idle, CH340T pin 3 is high and R7 acts like a 4.7k pull-up resistor, which is what the JTAG port requires.
 
 ## other hardware designs
 
