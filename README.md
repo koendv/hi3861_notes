@@ -230,6 +230,24 @@ Transfer rate: 68 KB/sec, 1577 bytes/write.
 
 The picture above is the schematic of [this board](pictures/hi3861_module.jpg).
 
+## proposal
+
+In normal mode, Hi3861 pin IO4 is serial port input RXD, and connected to CH340T pin 3 TXD, serial port output.
+
+When pin IO8 JTAG_ENABLE is pulled high, pins IO4..IO8 are used in JTAG mode.
+In JTAG mode, Hi3861 pin IO4 is  JTAG_TMS output. 
+This means there is a conflict: two output pins - Hi3861 pin IO4 and CH340T pin 3 - are connected together.
+
+A possible solution is adding a resistor between these two pins:
+
+|[![before](pictures/before_patch.svg)](pictures/before_patch.svg)|[![after](pictures/after_patch.svg)](pictures/after_patch.svg)|
+|---|---|
+|before|after|
+
+This way when the usb serial port is idle, CH340T pin 3 is high and R4 acts like a 4.7k pull-up resistor, which is what the JTAG port requires.
+
+## other hardware designs
+
 - [reference design](http://www.hihope.org/en/) and [documentation](http://www.hihope.org/en/download/download.aspx?mtt=26)
 - [Tiny-Hi3861](https://github.com/imliubo/Tiny-Hi3861). Original on [gitee](https://gitee.com/meng_guan/Tiny-Hi3861/)
 - [genkipi](https://gitee.com/genkipi/devboard_device_itcast_genkipi)
