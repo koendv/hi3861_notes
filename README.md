@@ -238,7 +238,7 @@ When pin IO8 JTAG_ENABLE is pulled high, pins IO4..IO8 are used in JTAG mode.
 In JTAG mode, Hi3861 pin IO4 is  JTAG_TMS output. 
 This means there is a conflict: two output pins - Hi3861 pin IO4 and CH340T pin 3 - are connected together.
 
-A possible solution is adding a resistor between these two pins:
+A possible solution is adding a resistor:
 
 |[![before](pictures/before_patch.svg)](pictures/before_patch.svg)|[![after](pictures/after_patch.svg)](pictures/after_patch.svg)|
 |---|---|
