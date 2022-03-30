@@ -263,6 +263,7 @@ Transfer rate: 68 KB/sec, 1577 bytes/write.
 The picture above is the schematic of [this board](pictures/hi3861_module.jpg).
 
 ## proposal
+Compare the schematic above in normal and in JTAG mode.
 
 In normal mode, Hi3861 pin IO4 is serial port input RXD, and connected to CH340T pin 3 TXD, serial port output.
 
@@ -276,7 +277,7 @@ A possible solution is adding a resistor:
 |---|---|
 |before|after|
 
-This way when the usb serial port is idle, CH340T pin 3 is high and R7 acts like a 4.7k pull-up resistor, which is what signal JTAG_TMS requires.
+This way when the usb serial port is idle, CH340T pin 3 is high and R7 acts like a 4.7k pull-up resistor, which is what signal JTAG_TMS requires. Tested with JLINK and FT2232HL.
 
 ## other hardware designs
 
