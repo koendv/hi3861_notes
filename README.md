@@ -176,7 +176,7 @@ cd blackmagic
 patch -p1 < ../blackmagic/hi3681.patch
 make PROBE_HOST=hosted
 ```
-Connect to JTAG with FT2232. The Hi3861 is recognized, but more work is needed.
+Connect to JTAG with FT2232. The Hi3861 is recognized, but more work is needed. Reading and writing flash is missing; see _Hi3861 V100/Hi3861L V100/Hi3881 V100 Wi-Fi Chip Data Sheet, 3.3.1 Reading and Writing the Flash Memory_.
 
 ## toolchain
 
@@ -267,7 +267,7 @@ The picture above is the schematic of [this board](pictures/hi3861_module.jpg).
 In normal mode, Hi3861 pin IO4 is serial port input RXD, and connected to CH340T pin 3 TXD, serial port output.
 
 When pin IO8 JTAG_ENABLE is pulled high, pins IO4..IO8 are used in JTAG mode.
-In JTAG mode, Hi3861 pin IO4 is  JTAG_TMS output. 
+In JTAG mode, Hi3861 pin IO4 is  JTAG_TMS output.
 This means there is a conflict: two output pins - Hi3861 pin IO4 and CH340T pin 3 - are connected together.
 
 A possible solution is adding a resistor:
