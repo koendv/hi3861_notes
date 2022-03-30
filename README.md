@@ -131,7 +131,39 @@ The [jlink directory](jlink) contains a script for the [Segger JLink](https://ww
 ```
 JLink.exe -device RISC-V -Speed 2000 -IF JTAG -jtagconf -1,-1 jlinkBurner.txt
 ```
-
+Under linux:
+```
+ $ rlfe /opt/jlink/JLinkExe -device RV32 -if JTAG -speed 1000 -jtagconf -1,-1 -AutoConnect 1
+Connecting to target via JTAG
+ConfigTargetSettings() start
+ConfigTargetSettings() end
+TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+ConfigTargetSettings() start
+ConfigTargetSettings() end
+TotalIRLen = 5, IRPrint = 0x01
+JTAG chain detection found 1 devices:
+ #0 Id: 0x0000076D, IRLen: 05, HiSilicon RV32
+Debug architecture:
+  RISC-V debug: 0.13
+  AddrBits: 7
+  DataBits: 32
+  IdleClks: 5
+Memory access:
+  Via system bus: No
+  Via ProgBuf: Yes (3 ProgBuf entries)
+  Via abstract command (AAM): May be tried as last resort
+DataBuf: 1 entries
+  autoexec[0] implemented: Yes
+Detected: RV32 core
+CSR access via abs. commands: No
+Temp. halted CPU for NumHWBP detection
+HW instruction/data BPs: 4
+Support set/clr BPs while running: No
+HW data BPs trigger before execution of inst
+BG memory access support: No
+RISC-V identified.
+J-Link>
+```
 jlink has a good implementation of the risc-v debug interface, but support to flash Hi3861 processors is not built in. Keep the JTAG cable short - 6cm or less.
 
 ### black magic probe
