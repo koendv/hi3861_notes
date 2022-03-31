@@ -176,7 +176,7 @@ cd blackmagic
 patch -p1 < ../blackmagic/hi3681.patch
 make PROBE_HOST=hosted
 ```
-Connect to JTAG with FT2232. The Hi3861 is recognized, but more work is needed. Reading and writing flash is missing; see _Hi3861 V100/Hi3861L V100/Hi3881 V100 Wi-Fi Chip Data Sheet, 3.3.1 Reading and Writing the Flash Memory_.
+Connect to JTAG with FT2232. The Hi3861 is recognized, but more work is needed. Support for reading and writing flash is missing.
 
 ## toolchain
 
