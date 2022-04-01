@@ -50,7 +50,7 @@ IO08|JTAG_ENABLE|Pull high
 If pin IO8 is low at power-up, pins IO0...IO4 are normal GPIO pins.
 If pin IO8 is high at power-up, pins IO0...IO4 are used for JTAG.
 
-JTAG pins IO03, IO04 are also connected with the CH340 usb-serial converter RX, TX pins.  Conflict is possible if using usb serial and JTAG at the same time.
+If JTAG_ENABLE is high at power-up, pins IO03, IO04 are used for JTAG.  If JTAG_ENABLE is low at power-up, pins IO03, IO04 are used as console serial port RX, TX pins. Conflict is possible if using usb serial and JTAG at the same time.
 
 ## hi3861 start up mode
 
