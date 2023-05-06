@@ -321,7 +321,7 @@ Modules with in-built pcb antenna are probably easiest to use in your own design
 
 [xingrz](https://xingrz.me) provided the sections about booting, building LiteOS, Zephyr and flashing with the hiburn protocol.
 
-This document may contain errors. If you find errors in this document, please open an issue.
+This document may contain errors. If you find errors in this document, please open an issue or a pull request.
 If this page saved you some time, maybe you want to buy me a cup of tea.  Thank you.
 
 [![ko-fi](pictures/kofibutton.svg)](https://ko-fi.com/Q5Q03LPDQ)
