@@ -71,13 +71,36 @@ A small circuit is needed to enable the JTAG interface. The adapter board plugs 
 - [schematic](hi3861-jtag/hi3861-jtag_sch.pdf)
 - [kicad pcb design](hi3861-jtag)
 
+## Boot
+
+The boot process of Hi3861 consists with three parts: romboot, flashboot and kernel (user code, or the OS itself).
+
+1. The fixed **romboot** verifies the **flashboot** at `FLASH_BASE`, copies the flashboot to `0x10A000` (which is actually `CPU_RAM_BASE + 200KB`) and executes. Since the first 64 bytes in the bootable image is the signature header, the actual entry is `0x10A040`
+2. The **flashboot** then verifies and boots the **kernel** at `FLASH_BASE + 0xD3C0`.
+
+## Build
+
+A full build of LiteOS generates several images. Finally a `Hi3861_demo_allinone.bin` can be imported to the HiBurn tool to flash. Here is a flow chart of the build progress:
+
+![Hi3861](https://user-images.githubusercontent.com/288288/236608930-58a6065b-c844-4de3-8327-25031ade4414.png)
+
+Though not documented, the signature header is simple. There is an open source signing tool in Python: [sign_bin.py](https://github.com/xingrz/hal_hisilicon/blob/319fce6760d25510ffae30f06c8d2190db636db2/hi3861/boot/sign_bin.py)
+
 ## tools
 
 Tools to flash firmware: hiburn, openocd, jlink.
 
 ### hiburn
 
-[Hiburn](tools/) is a Windows tool for downloading firmware via the serial port. There is also an open source [linux version of hiburn](https://github.com/OpenHisiIpCam/hiburn). For hiburn to work, the firmware - LiteOS or OpenHarmony - needs to contain the u-boot feature.
+The tool to download firmware to the HI3861/HI3881 through the serial port is called **hiburn**. There is a hiburn from Huawei, and there are open source versions. These are different tools that share the same name.
+
+- [Hiburn](tools/) is a Windows tool from Huawei for downloading firmware via the serial port.
+- The Zephyr project has an [open source alternative  for Hi3861](https://github.com/xingrz/zephyr/blob/87f33dc624405e1a0e99fb78715cfd644421106b/scripts/west_commands/runners/hiburn.py).
+- There is also an open source linux version of [hiburn for Hi3881](https://github.com/OpenHisiIpCam/hiburn).
+
+The protocol to flash Hi3861 is a combination of a private command procotol and [Ymodem](https://en.wikipedia.org/wiki/YMODEM). Though the client side (HiBurn) is not open source, we can see how the protocol looks from the server side: [loaderboot](https://gitee.com/openharmony/device_soc_hisilicon/blob/master/hi3861v100/sdk_liteos/boot/loaderboot/common/cmd_loop.c) from the LiteOS/OpenHarmony SDK. Just like the flashboot, the entry of the loaderboot is at `0x10A040`.
+
+For hiburn to work, LiteOS or OpenHarmony needs to contain the u-boot feature.
 
 ### openocd
 
@@ -168,15 +191,7 @@ jlink has a good implementation of the risc-v debug interface, but support to fl
 
 ### black magic probe
 
-[Black magic probe](https://github.com/blackmagic-debug/blackmagic) is an open source debugger for arm processors. risc-v on bmp is [work in progress](https://github.com/blackmagic-debug/blackmagic/pull/924), support for GD32VF103 and ESP32-C3. To compile an experimental version of bmp for risc-v:
-
-```
-git clone -b ruabmbua https://github.com/UweBonnes/blackmagic
-cd blackmagic
-patch -p1 < ../blackmagic/hi3681.patch
-make PROBE_HOST=hosted
-```
-Connect to JTAG with FT2232. The Hi3861 is recognized, but more work is needed. Support for reading and writing flash is missing.
+[Black magic probe](https://github.com/blackmagic-debug/blackmagic) is an open source debugger for arm processors. risc-v on bmp is part of the development sources, but not yet of the release. The Hi3861 is recognized, but support for reading and writing Hi3861 flash is missing.
 
 ## toolchain
 
@@ -214,7 +229,7 @@ If you start a 64-bit gdb, and connect to a 32-bit target, it may be necessary t
 ```
 ## operating systems
 
-The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony.
+The Hi3861 is supported by two Huawei operating systems: LiteOS and OpenHarmony. There is also open source for the Zephyr RTOS and the rust language.
 
 The sdk can be compiled with [riscv32-unknown-elf-gcc](https://device.harmonyos.com/en/docs/documentation/guide/quickstart-lite-steps-hi3861-setting-0000001105989316) or with hcc_riscv32, a patched gcc 7.3.  Compared to standard *riscv32-unknown-elf-gcc*, the hcc_riscv32 compiler has extensions for faster interrupts and more compact code:
 
@@ -224,6 +239,10 @@ The sdk can be compiled with [riscv32-unknown-elf-gcc](https://device.harmonyos.
 - merge multiple load and store instructions into "load multiple" *ldm* and "store multiple" *stm* instructions. Compiler option ``-fldm-stm-optimize``
 
 These extensions to standard risc-v are discussed in [Perotti](doc/CARRV2020_paper_12_Perotti.pdf).
+
+## zephyr
+
+[xingrz](https://xingrz.me/) is porting [Zephyr RTOS to Hi3861](https://github.com/xingrz/zephyr/commits/hi3861-dev).
 
 ## rust
 
@@ -293,10 +312,14 @@ Modules with in-built pcb antenna are probably easiest to use in your own design
 ## links
 
 - [Hi3861V100 product page](https://www.hisilicon.com/en/products/smart-iot/ShortRangeWirelessIOT/Hi3861V100)
-- [hiburn for linux](https://github.com/OpenHisiIpCam/hiburn)
+- [Hi3881 hiburn for linux](https://github.com/OpenHisiIpCam/hiburn)
+- [open source hiburn for Hi3861](https://github.com/xingrz/zephyr/blob/87f33dc624405e1a0e99fb78715cfd644421106b/scripts/west_commands/runners/hiburn.py)
 - [Hi3861 on aliexpress](https://www.aliexpress.com/item/1005003339044104.html)
 - [Installing Liteos on Hi3861 (in Chinese)](https://harmonyos.51cto.com/posts/4013)
+- [Zephyr RTOS for Hi3861](https://github.com/xingrz/zephyr/commits/hi3861-dev).
 - FT2232HL [schematic](https://github.com/arm8686/FT2232HL-Board) and [shop](https://www.aliexpress.com/item/32975940318.html).
+
+[xingrz](https://xingrz.me) provided the sections about booting, building LiteOS, Zephyr and flashing with the hiburn protocol.
 
 This document may contain errors. If you find errors in this document, please open an issue.
 If this page saved you some time, maybe you want to buy me a cup of tea.  Thank you.
