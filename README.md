@@ -206,6 +206,10 @@ cd build/
 make
 ```
 
+The `riscv32-unknown-elf` toolchain works fine. The `riscv64-zephyr-elf` from [Zephyr SDK](https://github.com/zephyrproject-rtos/sdk-ng/releases/tag/v0.16.0) works fine, too (I prefer it since it runs on my MacBook Pro :p ).
+
+The Hi3861's CPU is actually a RISC-V Privilege CPU with instruction set extension-M plus extension-C and Zicsr. While compiling with the Zephyr GCC, `-march=rv32imc` should be changed to `-march=rv32imc_zicsr`.
+
 ## gdb
 
 gdb, the companion debugger for gcc. Build gdb for risc-v from source:
