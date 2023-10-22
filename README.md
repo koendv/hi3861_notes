@@ -96,7 +96,6 @@ The tool to download firmware to the HI3861/HI3881 through the serial port is ca
 
 - [Hiburn](tools/) is a Windows tool from Huawei for downloading firmware via the serial port.
 - The Zephyr project has an [open source alternative  for Hi3861](https://github.com/xingrz/zephyr/blob/87f33dc624405e1a0e99fb78715cfd644421106b/scripts/west_commands/runners/hiburn.py).
-- There is also an open source linux version of [hiburn for Hi3881](https://github.com/OpenHisiIpCam/hiburn).
 
 The protocol to flash Hi3861 is a combination of a private command procotol and [Ymodem](https://en.wikipedia.org/wiki/YMODEM). Though the client side (HiBurn) is not open source, we can see how the protocol looks from the server side: [loaderboot](https://gitee.com/openharmony/device_soc_hisilicon/blob/master/hi3861v100/sdk_liteos/boot/loaderboot/common/cmd_loop.c) from the LiteOS/OpenHarmony SDK. Just like the flashboot, the entry of the loaderboot is at `0x10A040`.
 
