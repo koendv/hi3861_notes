@@ -10,7 +10,6 @@
 - 352 kbyte ram in total, 280 kbyte ram available for user programs
 - 2 mbyte flash
 - WiFi
-- Bluetooth
 
 ## block diagram
 
